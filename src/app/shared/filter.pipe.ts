@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, busqueda:any): any {
-    if(busqueda === ''){
+    if(busqueda === '' || busqueda === null){
       return value
     }else{
       const filtrados = [];

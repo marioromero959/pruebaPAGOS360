@@ -1,0 +1,27 @@
+<div class="container">
+    <h1 data-aos="fade-up">Inicio de Sesión</h1>
+    <img src="./../assets/images/logo_pagos360.svg" alt="PAGOS360" class="py-2">
+    <div class="contacto">
+        <form [formGroup]="login">
+            <div class="form-group" data-aos="fade-left">
+                <label>Nombre o Usuario</label>
+                <input type="text" class="form-control" [class.is-valid]="nameField?.valid"
+                    [class.is-invalid]="nameField?.invalid && nameField?.touched" formControlName="nombre">
+                    <div class="invalid-feedback">
+                        Este campo es requerido.
+                    </div>
+                </div>
+
+            <div class="form-group" data-aos="fade-right">
+                <label>Email</label>
+                <input type="text" class="form-control" [class.is-valid]="emailField?.valid"
+                    [class.is-invalid]="emailField?.invalid && emailField?.touched" formControlName="email">
+                <div class="invalid-feedback">
+                    Debe escribir un email válido.
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="ingresar()">Login</button>
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+<div class="container p-4">
+    <div class="header">
+      <img src="./../assets/images/logo_pagos360.svg" alt="PAGOS360" class="py-2">
+      <h2 class="title">REPORTE DE COBRANZAS</h2>
+    </div>
+    <form [formGroup]="filterForm">
+      <div class="form-row">
+        <div class="col-md-2 mb-3">
+          <label>Fecha</label>
+          <input type="date" formControlName="date" class="form-control mb-2 mr-sm-2" id="filterDate" max="9999-12-31"
+            [class.is-valid]="dateField?.valid" [class.is-invalid]="dateField?.invalid && dateField?.touched">
+          <div class="invalid-feedback">
+            Debe seleccionar una fecha válida.
+          </div>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label>Búsqueda</label>
+          <input type="text" formControlName="searchFilter" class="form-control mb-2 mr-sm-2" id="filterSearch">
+        </div>
+        <div class="col-md-1 mt-4">
+          <button type="button" class="btn btn-primary mt-2" (click)="searchData()">Buscar</button>
+        </div>
+        <div class="col-md-4 mt-4">
+          <button type="button" class="btn btn-secondary mt-2" (click)="this.filterForm.reset()">Reestablecer</button>
+        </div>
+      </div>
+    </form>
+  
+    <ng-container *ngIf= "(this.dataCobranzas | filter:this.filterForm.value.searchFilter) as resultado">
+    <table class="table table-hover table-responsive" *ngIf="resultado.length > 0; else errorMessage">
+      <thead>
+        <tr>
+          <th scope="col">Recibido</th>
+          <!-- <th scope="col">request_id</th> -->
+          <!-- <th scope="col col-1">external_reference</th> -->
+          <th scope="col">Pagador</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Fecha de Pago</th>
+          <th scope="col">Medio de Pago</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Comisión Neta</th>
+          <th scope="col">IVA</th>
+          <th scope="col">Importe Neto</th>
+          <th scope="col">Disponible desde</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of this.dataCobranzas | filter:this.filterForm.value.searchFilter">
+        <tr>
+          <td class="text-center">{{data.informed_date | date:"dd/MM/yyyy"}}</td>
+          <!-- <td>{{data.request_id}}</td> -->
+          <!-- <td class="col col-1">{{data.external_reference}}</td> -->
+          <td>{{data.payer_name}}</td>
+          <td>{{data.description}}</td>
+          <td class="text-center">{{data.payment_date | date:"dd/MM/yyyy"}}</td>
+          <td>{{data.channel}}</td>
+          <td class="text-right">{{data.amount_paid}}</td>
+          <td class="text-right">{{data.net_fee}}</td>
+          <td class="text-right">{{data.iva_fee}}</td>
+          <td class="text-right">{{data.net_amount}}</td>
+          <td class="text-center">{{data.available_at | date:"dd/MM/yyyy"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  
+    <ng-template #errorMessage>
+      <div class="col-12 alert alert-dismissible fade show mt-4" 
+      [ngClass]="{
+        'alert-warning':loaded,
+        'alert-primary':!loaded}" 
+        role="alert">
+        <strong>{{message}}</strong>
+      </div>  
+    </ng-template>
+  
+  </div>

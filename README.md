@@ -1,27 +1,41 @@
-# Pagos360
+# Proyecto de Angular - PAGOS 360
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+Este es un proyecto de Angular que incluye un módulo de login básico y un modulo de Cobranzas. El objetivo principal es permitir que los usuarios inicien sesión en la aplicación y accedan a contenido protegido el cual despliega una tabla con registros de los reportes de Cobranzas de PAGOS 360 según corresponda al día de la fecha seleccionada.
 
-## Development server
+## IMPORTANTE
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este proyecto no esta realizado una autenticación con una API real, de igual forma esta simulando el mismo caso utilizando las credenciales entregadas para la tarea, al ingresar al login, puede escribir datos de prueba que cumplan con el formato válido para autenticarse y asi obtener el token que necesita para la consulta a la API de PAGOS360 el cual se está seteando en el localStorage de su dispositivo. 
 
-## Code scaffolding
+## Requisitos previos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Antes de comenzar, asegurarse de tener instalado lo siguiente:
+- Node.js: https://nodejs.org/
+- Angular CLI: Instálalo globalmente ejecutando `npm install -g @angular/cli`
+
+## Instalación
+
+Sigua estos pasos para instalar y configurar el proyecto localmente:
+
+1. Clone este repositorio.
+2. Navege al directorio del proyecto: `cd pagos360`
+3. Instale las dependencias: `npm install`
+
+## Configuración
+
+Antes de ejecutar la aplicación, necesitará realizar algunas configuraciones adicionales:
+
+1. **Ambiente**: Configure las variables de entorno necesarias, en este caso la API_PRUEBA_PAGOS(se encuentra previamente seteada para fines practicos de desarrollo y producción).
+
+
+## Servidor de Desarrollo
+
+Para ejecutar el proyecto localmente, utilize el siguiente comando: ng serve (si agrega la flag -o abrira su ventana de navegador predeterminado)
+
+Una vez que la compilación esté completa, podrá acceder a la aplicación en http://localhost:4200/ desde su navegador.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Esta aplicación proporciona una interfaz simple para que los usuarios ingresen sus credenciales y accedan a la misma. Sim embargo es importante mencionar que este es un ejemplo básico y no debe utilizarse en un entorno de producción sin las debidas mejoras en seguridad.
+De igual manera en caso de querer realizar el build de la aplicacion para producción, el mismo se realiza con el comando: ng build 
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Gracias por tomarse el tiempo de revisar mi desafío, intenté plasmar en el menor tiempo la mayor cantidad de conocimiento posbile dada la tarea propuesta, espero sea de su agrado y para cualquier colaboración o comentario me encuentro a su disposición. Saludos Mario
