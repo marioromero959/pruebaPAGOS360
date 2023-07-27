@@ -13,6 +13,7 @@ export class CobranzasService {
     getReporteCobranzas(date:string):Observable<any>{      
       const headers = new HttpHeaders({
         'Content-Type':  'application/json',
+        'Authorization':`Bearer ${environment.api_key}`
       })
       return this.http.get<any>(`${environment.API_PRUEBAS_PAGOS360}/report/collection/${date}`,{headers});
     }
